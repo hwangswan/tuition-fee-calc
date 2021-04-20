@@ -9,7 +9,6 @@ package TuitionFee;
 import Course.*;
 
 public class TuitionFee {
-  final int oneCreditFee = 265;
   private Course _course;
 
   public TuitionFee(Course course) {
@@ -17,14 +16,14 @@ public class TuitionFee {
   }
 
   public int calculate() {
-    return (_course.classCredit() + 2 * _course.labCredit()) * oneCreditFee * 1000;
+    return (_course.classCredit() + 2 * _course.labCredit());
   }
 
   public int totalCredit() {
     return _course.totalCredit();
   }
 
-  public String toString() {
+  public String toCSVString() {
     StringBuilder builder = new StringBuilder();
 
     builder.append(_course.name());
