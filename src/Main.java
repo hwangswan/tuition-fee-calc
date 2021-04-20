@@ -21,7 +21,7 @@ class Main {
 
       Semester newSemester = Helper.Input.scanSemester(inputFile);
     
-      Helper.Output.printToFile(outputFile, newSemester);
+      Helper.Output.toFile(outputFile, newSemester);
     }
   }
 }

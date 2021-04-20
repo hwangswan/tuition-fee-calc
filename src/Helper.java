@@ -60,7 +60,7 @@ public class Helper {
    * This class helps output data.
    */
   public static class Output { 
-    public static void printToFile(String outputFileName, Semester semester) {
+    public static void toFile(String outputFileName, Semester semester) {
       Semester.Course[] courseList = semester.courseList();
       
       try {
