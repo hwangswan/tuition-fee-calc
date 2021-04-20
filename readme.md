@@ -14,4 +14,5 @@ Calculate semester tuition fee in a .csv file.
 4. compile: `./compile.sh`
 
 ## run
-Edit `run.sh`, replace `INPUT` with your input .csv file and `OUTPUT` with your output .csv file.
+1. Edit `run.sh`, replace `INPUT` with your input .csv file and `OUTPUT` with your output .csv file.
+2. `./run.sh`
