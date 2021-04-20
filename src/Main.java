@@ -6,8 +6,6 @@
 import java.io.*;
 import java.util.*;
 
-import Course.*;
-import TuitionFee.*;
 import Semester.*;
 import Helper.*;
 
@@ -23,7 +21,7 @@ class Main {
 
       Semester newSemester = Helper.Input.scanSemester(inputFile);
     
-      Helper.Output.printToFile(outputFile, newSemester);
+      Helper.Output.toFile(outputFile, newSemester);
     }
   }
 }

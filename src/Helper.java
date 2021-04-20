@@ -9,8 +9,6 @@ package Helper;
 import java.util.*;
 import java.io.*;
 
-import Course.*;
-import TuitionFee.*;
 import Semester.*;
 
 public class Helper {
@@ -18,16 +16,16 @@ public class Helper {
    * This class helps input data.
    */
   public static class Input {
-    public static Course scanCourse(String inputLine) {
+    public static Semester.Course scanCourse(String inputLine) {
       String[] currentLineData = inputLine.split(",", 3);
       
-      Course course = new Course(currentLineData[0], Integer.parseInt(currentLineData[1]), Integer.parseInt(currentLineData[2]));
+      Semester.Course course = new Semester.Course(currentLineData[0], Integer.parseInt(currentLineData[1]), Integer.parseInt(currentLineData[2]));
 
       return course;
     }
 
-    public static TuitionFee[] scanTuitionFeeList(String inputFileName) {
-      List<TuitionFee> builder = new ArrayList<TuitionFee>();
+    public static Semester.Course[] scanCourseList(String inputFileName) {
+      List<Semester.Course> builder = new ArrayList<Semester.Course>();
 
       try {
         File reader = new File(inputFileName);
@@ -35,11 +33,9 @@ public class Helper {
 
         while (scanner.hasNextLine()) {
           // Get 3 field only.
-          Course newCourse = scanCourse(scanner.nextLine());
+          Semester.Course newCourse = scanCourse(scanner.nextLine());
 
-          TuitionFee newCourseFee = new TuitionFee(newCourse);
-
-          builder.add(newCourseFee);
+          builder.add(newCourse);
         }
 
         scanner.close();
@@ -48,13 +44,13 @@ public class Helper {
         e.printStackTrace();
       }
 
-      return builder.toArray(new TuitionFee[0]);
+      return builder.toArray(new Semester.Course[0]);
     }
 
     public static Semester scanSemester(String fileName) {
-      TuitionFee[] tuitionFeeList = scanTuitionFeeList(fileName);
+      Semester.Course[] courseList = scanCourseList(fileName);
 
-      Semester semester = new Semester(tuitionFeeList);
+      Semester semester = new Semester(courseList);
 
       return semester;
     }
@@ -64,14 +60,15 @@ public class Helper {
    * This class helps output data.
    */
   public static class Output { 
-    public static void printToFile(String outputFileName, Semester semester) {
-      TuitionFee[] TuitionFeeList = semester.tuitionFeeList();
+    public static void toFile(String outputFileName, Semester semester) {
+      Semester.Course[] courseList = semester.courseList();
+      
       try {
         FileWriter writer = new FileWriter(outputFileName);
         writer.write("Course name,Credits,Fee\n");
 
-        for (int i = 0; i < TuitionFeeList.length; ++i) {
-          writer.write(TuitionFeeList[i].toCSVString());
+        for (int i = 0; i < courseList.length; ++i) {
+          writer.write(courseList[i].toCSVString());
           writer.write("\n");
         }
 

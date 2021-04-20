@@ -6,29 +6,75 @@
 
 package Semester;
 
-import TuitionFee.*;
-
 public class Semester {
-  // Change this.
-  private int oneCreditFee = 265000;
+  final static int oneCreditCost = 265000;
+  
+  /**
+   * Definition of a Course
+   */
+  public static class Course {
+    private String _name;
+    private int    _classCredit;
+    private int    _labCredit;
+
+    // Getter
+    public String name() {
+      return _name;
+    }
+
+    public int classCredit() {
+      return _classCredit;
+    }
+
+    public int labCredit() {
+      return _labCredit;
+    }
+
+    // Constructor
+    public Course(String name, int classCredit, int labCredit) {
+      _name        = name;
+      _classCredit = classCredit;
+      _labCredit   = labCredit;
+    }
+
+    public int totalCredit() {
+      return _classCredit + _labCredit;
+    }
+
+    public int tuitionFee() {
+      return (2 * _labCredit + _classCredit) * oneCreditCost;
+    }
+
+    public String toCSVString() {
+      StringBuilder builder = new StringBuilder();
+
+      builder.append(_name);
+      builder.append(",");
+      builder.append(totalCredit());
+      builder.append(",");
+      builder.append(tuitionFee());
+
+      return builder.toString();
+    }
+  }
 
   // Private properties.
-  private TuitionFee[] _tuitionFeeList;
+  private Semester.Course[] _courseList;
   private int _semesterTuitionFee;
   private int _semesterTuitionCredits;
 
   // Constructor
-  public Semester(TuitionFee[] tuitionFeeList) {
-    _tuitionFeeList = tuitionFeeList;
+  public Semester(Semester.Course[] courseList) {
+    _courseList = courseList;
 
-    for (int i = 0; i < tuitionFeeList.length; ++i) {
-      _semesterTuitionFee     += tuitionFeeList[i].calculate() * oneCreditFee;
-      _semesterTuitionCredits += tuitionFeeList[i].totalCredit();
+    for (int i = 0; i < courseList.length; ++i) {
+      _semesterTuitionFee     += courseList[i].tuitionFee();
+      _semesterTuitionCredits += courseList[i].totalCredit();
     }
   }
 
-  public TuitionFee[] tuitionFeeList() {
-    return _tuitionFeeList;
+  public Semester.Course[] courseList() {
+    return _courseList;
   }
 
   public String toCSVString() {
