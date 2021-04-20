@@ -1,3 +1,9 @@
+/**
+ * Helper implementation
+ *
+ * Code by @trhgquan - https://github.com/trhgquan
+ */
+
 package Helper;
 
 import java.util.*;
