@@ -6,8 +6,6 @@
 import java.io.*;
 import java.util.*;
 
-import Course.*;
-import TuitionFee.*;
 import Semester.*;
 import Helper.*;
 
