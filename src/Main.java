@@ -1,7 +1,7 @@
 /**
  * Simple program to calculate tuition fee in a semester.
  *
- * Code by @trhgquan - https://github.com/trhgquan
+ * @author trhgquan - https://github.com/trhgquan
  */
 import java.io.*;
 import java.util.*;

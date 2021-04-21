@@ -1,7 +1,7 @@
 /**
  * Definition of a Semester.
  *
- * Code by @trhgquan - https://github.com/trhgquan
+ * @author trhgquan - https://github.com/trhgquan
  */
 
 package Semester;
