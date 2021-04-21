@@ -28,11 +28,14 @@ public class Helper {
      *
      * @param  String
      * @return Semester.Course
+     * @throws Exception
      */
-    public static Semester.Course scanCourse(String inputLine) {
+    public static Semester.Course scanCourse(String inputLine) throws Exception {
       String[] currentLineData = inputLine.split(",", 3);
-      
-      Semester.Course course = new Semester.Course(currentLineData[0], Integer.parseInt(currentLineData[1]), Integer.parseInt(currentLineData[2]));
+
+      Semester.Course course = new Semester.Course(currentLineData[0],
+                                                   Integer.parseInt(currentLineData[1]),
+                                                   Integer.parseInt(currentLineData[2]));
 
       return course;
     }
@@ -42,27 +45,28 @@ public class Helper {
      *
      * @param  String
      * @return Semester.Course[]
+     * @throws Exception
      */
-    public static Semester.Course[] scanCourseList(String inputFileName) {
+    public static Semester.Course[] scanCourseList(String inputFileName) throws Exception {
       List<Semester.Course> builder = new ArrayList<Semester.Course>();
 
-      try {
-        File reader = new File(inputFileName);
-        Scanner scanner = new Scanner(reader);
+      // Create a new file reader.
+      File reader = new File(inputFileName);
 
-        while (scanner.hasNextLine()) {
-          Semester.Course newCourse = scanCourse(scanner.nextLine());
+      // Create a new file scanner.
+      Scanner scanner = new Scanner(reader);
 
-          builder.add(newCourse);
-        }
+      // Scan through lines.
+      while (scanner.hasNextLine()) {
+        Semester.Course newCourse = scanCourse(scanner.nextLine());
 
-        scanner.close();
-      } catch (FileNotFoundException e) {
-        System.out.println("Error happened!");
-
-        e.printStackTrace();
+        builder.add(newCourse);
       }
 
+      // Close the scanner
+      scanner.close();
+
+      // Return the array. Notice that we must initialise the array with new Semester.Course.
       return builder.toArray(new Semester.Course[0]);
     }
 
@@ -71,8 +75,9 @@ public class Helper {
      *
      * @param  String
      * @return Semester
+     * @throws Exception
      */
-    public static Semester scanSemester(String fileName) {
+    public static Semester scanSemester(String fileName) throws Exception {
       Semester.Course[] courseList = scanCourseList(fileName);
 
       Semester semester = new Semester(courseList);
@@ -91,33 +96,31 @@ public class Helper {
      *
      * @param  String
      * @param  Semester
+     * @throws Exception
      */
-    public static void toFile(String outputFileName, Semester semester) {
+    public static void toFile(String outputFileName, Semester semester) throws Exception {
       Semester.Course[] courseList = semester.courseList();
       
-      try {
-        FileWriter writer = new FileWriter(outputFileName);
+      // Create a new file writer.
+      FileWriter writer = new FileWriter(outputFileName);
 
-        // Print the file's header.
-        writer.write("Course name,Credits,Fee\n");
+      // Print the file's header.
+      writer.write("Course name,Credits,Fee\n");
 
-        // Print each course in that semester.
-        for (int i = 0; i < courseList.length; ++i) {
-          writer.write(courseList[i].toCSVString());
-          writer.write("\n");
-        }
-
-        // Print the course's total tuition fee.
-        writer.write(semester.toCSVString());
-        
-        writer.close();
-
-        System.out.println(outputFileName + " created!");
-      } catch (IOException e) {
-        System.out.println("Error happened!");
-
-        e.printStackTrace();
+      // Print each course in that semester.
+      for (int i = 0; i < courseList.length; ++i) {
+        writer.write(courseList[i].toCSVString());
+        writer.write("\n");
       }
+
+      // Print the course's total tuition fee.
+      writer.write(semester.toCSVString());
+
+      // Close the file writer. 
+      writer.close();
+
+      // Notice the user.
+      System.out.println(outputFileName + " created!");
     } 
   }
 }

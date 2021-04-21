@@ -16,12 +16,20 @@ class Main {
     }
     
     else {
-      String inputFile = args[0];
-      String outputFile = args[1];
+      try {
+        String inputFile = args[0];
+        String outputFile = args[1];
 
-      Semester newSemester = Helper.Input.scanSemester(inputFile);
+        Semester newSemester = Helper.Input.scanSemester(inputFile);
     
-      Helper.Output.toFile(outputFile, newSemester);
+        Helper.Output.toFile(outputFile, newSemester);
+      }
+
+      catch (Exception e) {
+        System.out.println("Error occured. Watch the stack trace to resolve:");
+
+        e.printStackTrace();
+      }
     }
   }
 }
