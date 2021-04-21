@@ -3,8 +3,6 @@
  *
  * @author trhgquan - https://github.com/trhgquan
  */
-import java.io.*;
-import java.util.*;
 
 import Semester.*;
 import Helper.*;
