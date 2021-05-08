@@ -95,9 +95,9 @@ public class Semester {
       StringBuilder builder = new StringBuilder();
 
       builder.append(_name);
-      builder.append(",");
+      builder.append(", ");
       builder.append(totalCredit());
-      builder.append(",");
+      builder.append(", ");
       builder.append(tuitionFee());
 
       return builder.toString();
@@ -144,9 +144,9 @@ public class Semester {
     StringBuilder builder = new StringBuilder();
 
     builder.append("#");
-    builder.append(",");
+    builder.append(", ");
     builder.append(_semesterTuitionCredits);
-    builder.append(",");
+    builder.append(", ");
     builder.append(_semesterTuitionFee);
 
     return builder.toString();
