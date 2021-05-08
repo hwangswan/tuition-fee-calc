@@ -33,9 +33,10 @@ public class Helper {
     public static Semester.Course scanCourse(String inputLine) throws Exception {
       String[] currentLineData = inputLine.split(",", 3);
 
+      // Added string.trim(), since numbers in .csv can have spaces before & after.
       Semester.Course course = new Semester.Course(currentLineData[0],
-                                                   Integer.parseInt(currentLineData[1]),
-                                                   Integer.parseInt(currentLineData[2]));
+                                                   Integer.parseInt(currentLineData[1].trim()),
+                                                   Integer.parseInt(currentLineData[2].trim()));
 
       return course;
     }
@@ -105,7 +106,7 @@ public class Helper {
       FileWriter writer = new FileWriter(outputFileName);
 
       // Print the file's header.
-      writer.write("Course name,Credits,Fee\n");
+      writer.write("Course name, Credits, Fee\n");
 
       // Print each course in that semester.
       for (int i = 0; i < courseList.length; ++i) {
