@@ -4,15 +4,15 @@ Calculate my tuition fee in a semester, doing under OOP Java.
 VNUHCM - University of Science, Spring 2021.
 
 ## what it will do
-Calculate semester tuition fee in a .csv file.
+Calculate semester tuition fee in a `.csv` file.
 
 ## how to
 ### install
-1. make sure you have java jdk 8. 
-2. `git clone`
-3. grand permissions for `compile.sh`: `chmod 0700 compile.sh`
-4. compile: `./compile.sh`
+```shell
+$ git clone
+```
 
+- Note: Make sure you have at least Java JDK 8.
 ### input format
 The .csv input file should looks like this:
 |          class name         | class credit | lab credit |
@@ -23,6 +23,29 @@ The .csv input file should looks like this:
 | Calculus 1 (Lab)            |      0       |      1     |
 | ...                         |              |            |
 
-### run
-1. Edit `run.sh`, replace `INPUT` with your input .csv file and `OUTPUT` with your output .csv file.
-2. `./run.sh`
+### Command-line
+```shell
+$ java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv> 
+```
+### Shell scripts
+- Rename `compile.sh.example` and `run.sh.example`:
+```shell
+$ cp compile.sh.example compile.sh
+$ cp run.sh.example run.sh
+```
+
+- Grant permissions:
+```shell
+$ chmod 0700 compile.sh run.sh
+```
+
+- Compile:
+```shell
+$ ./compile.sh
+```
+
+- Edit `run.sh`
+- Run:
+```shell
+$ ./run.sh
+```
