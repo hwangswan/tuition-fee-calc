@@ -19,7 +19,17 @@ class Main {
       String outputFile = args[1];
 
       Semester newSemester = Helper.Input.scanSemester(inputFile);
-  
+
+      newSemester.setClassCost(Integer.parseInt(
+                                      Helper.Config
+                                      .getInstance()
+                                      .load("tuition-fee-calc.class")));
+
+      newSemester.setLabCost(Integer.parseInt(
+                                    Helper.Config
+                                    .getInstance()
+                                    .load("tuition-fee-calc.lab")));
+
       Helper.Output.toFile(outputFile, newSemester);
     }
 
