@@ -19,8 +19,79 @@ import Semester.*;
  */
 public class Helper {
   /**
+   * This class loads config.
+   *
+   * @author trhgquan - https://github.com/trhgquan
+   */
+  public static class Config {
+    /**
+     * Config file path
+     *
+     */
+    final String configFile = "tuition-fee-calc.config";
+    
+    /**
+     * Private fileStream.
+     *
+     */
+    private InputStream _fileStream = null;
+   
+    /**
+     * Properties loaded.
+     *
+     */
+    private static Properties _prop = null;
+
+    /**
+     * Singleton design pattern for Config.
+     *
+     */
+    private static Config _configInstance = null;
+
+    /**
+     * Private constructor for Config
+     * 
+     * @throws Exception
+     */
+    private Config() throws Exception {
+      _fileStream = new FileInputStream(configFile);
+
+      _prop = new Properties();
+
+      _prop.load(_fileStream);
+    }
+
+    /**
+     * Load property from file.
+     *
+     * @param  propertyName
+     * @return String
+     * @throws Exception
+     */
+    public static String load(String propertyName) throws Exception {
+      return _prop.getProperty(propertyName);
+    }
+
+    /**
+     * Static method to create Singleton Config class.
+     *
+     * @return Config
+     *
+     * @throws Exception
+     */
+    public static Config getInstance() throws Exception {
+      if (_configInstance == null) {
+        _configInstance = new Config();
+      }
+
+      return _configInstance;
+    }
+  }
+
+  /**
    * This class is all about input.
    *
+   * @author trhgquan - https://github.com/trhgquan
    */
   public static class Input {
     /**
@@ -60,7 +131,7 @@ public class Helper {
       // Scan through lines.
       while (scanner.hasNextLine()) {
         Semester.Course newCourse = scanCourse(scanner.nextLine());
-
+        
         builder.add(newCourse);
       }
 
@@ -90,6 +161,7 @@ public class Helper {
   /**
    * This class is all about output.
    *
+   * @author trhgquan - https://github.com/trhgquan
    */
   public static class Output {
     /**

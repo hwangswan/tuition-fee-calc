@@ -23,6 +23,13 @@ The .csv input file should looks like this:
 | Calculus 1 (Lab)            |      0       |      1     |
 | ...                         |              |            |
 
+### Credit cost configuration
+- Rename `tuition-fee-calc.config.example` to `tuition-fee-calc.config`:
+```shell
+$ cp tuition-fee-calc.config.example tuition-fee-calc.config
+```
+
+- Edit `tuition-fee-calc.config`.
 ### Command-line
 ```shell
 $ java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv> 
