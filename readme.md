@@ -13,7 +13,7 @@ Calculate semester tuition fee in a `.csv` file.
 
 ### install
 ```shell
-$ git clone
+git clone
 ```
 
 ### input format
@@ -29,7 +29,7 @@ The .csv input file should looks like this:
 ### Credit cost configuration
 - Rename `tuition-fee-calc.config.example` to `tuition-fee-calc.config`:
   ```shell
-  $ cp tuition-fee-calc.config.example tuition-fee-calc.config
+  cp tuition-fee-calc.config.example tuition-fee-calc.config
   ```
 
 - Edit `tuition-fee-calc.config`:
@@ -41,27 +41,27 @@ The .csv input file should looks like this:
   Replace `COST_OF_ONE_CLASS_CREDIT` with __cost of class credit__, `COST_OF_ONE_LAB_CREDIT` with __cost of lab credit__.
 ### Command-line
 ```shell
-$ java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv> 
+java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv> 
 ```
 ### Shell scripts
 - Rename `compile.sh.example` and `run.sh.example`:
   ```shell
-  $ cp compile.sh.example compile.sh
-  $ cp run.sh.example run.sh
+  cp compile.sh.example compile.sh
+  cp run.sh.example run.sh
   ```
 
 - Grant permissions:
   ```shell
-  $ chmod 0700 compile.sh run.sh
+  chmod 0700 compile.sh run.sh
   ```
 
 - Compile:
   ```shell
-  $ ./compile.sh
+  ./compile.sh
   ```
 
 - Edit `run.sh`
 - Run:
   ```shell
-  $ ./run.sh
+  ./run.sh
   ```
