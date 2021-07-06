@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Create config
+echo "tuition-fee-calc.class=265000" > tuition-fee-calc.config
+echo "tuition-fee-calc.lab=530000" >> tuition-fee-calc.config
+
+# Build package
+javac -d . src/Semester.java
+javac -d . src/Helper.java
+
+# Build main
+java src/Main.java data/19120338.csv fee.csv
+
+# Check status and print.
+if [[ $? -ne 0 ]]; then
+  echo "Build failed"
+  exit 1
+else
+  echo "Build success"
+  cat fee.csv
+  echo;
+fi

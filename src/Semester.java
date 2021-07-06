@@ -77,7 +77,8 @@ public class Semester {
      * @return int
      */
     public int tuitionFee() {
-      return _labCredit * Semester._labCost + _classCredit * Semester._classCost;
+      return (_labCredit * Semester._labCost) + 
+             (_classCredit * Semester._classCost);
     }
 
     /**
@@ -180,7 +181,7 @@ public class Semester {
   public String toCSVString() {
     StringBuilder builder = new StringBuilder();
 
-    builder.append("#");
+    builder.append("Total");
     builder.append(", ");
     builder.append(totalCredit());
     builder.append(", ");

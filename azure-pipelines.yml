@@ -10,11 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - script: |
-    sudo cp compile.sh.example compile.sh
-    sudo chmod 0700 compile.sh
-    sudo ./compile.sh
+    sudo cp test.sh.example test.sh
+    sudo chmod 0700 test.sh
+    sudo ./test.sh
   displayName: 'Test build script'
