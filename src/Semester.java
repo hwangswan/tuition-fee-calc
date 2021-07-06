@@ -13,12 +13,6 @@ package Semester;
  */
 public class Semester {
   /**
-   * Cost of one credit.
-   * 
-   */
-  final static int oneCreditCost = 265000;
-  
-  /**
    * Definition of a Course
    *
    * @author trhquan - https://github.com/trhgquan
@@ -83,7 +77,7 @@ public class Semester {
      * @return int
      */
     public int tuitionFee() {
-      return (2 * _labCredit + _classCredit) * oneCreditCost;
+      return _labCredit * Semester._labCost + _classCredit * Semester._classCost;
     }
 
     /**
@@ -95,9 +89,9 @@ public class Semester {
       StringBuilder builder = new StringBuilder();
 
       builder.append(_name);
-      builder.append(",");
+      builder.append(", ");
       builder.append(totalCredit());
-      builder.append(",");
+      builder.append(", ");
       builder.append(tuitionFee());
 
       return builder.toString();
@@ -108,9 +102,9 @@ public class Semester {
    * Private properties of the Semester.
    *
    */
+  private static int _classCost;
+  private static int _labCost;
   private Semester.Course[] _courseList;
-  private int _semesterTuitionFee;
-  private int _semesterTuitionCredits;
 
   /**
    * Semester's constructor.
@@ -119,11 +113,24 @@ public class Semester {
    */
   public Semester(Semester.Course[] courseList) {
     _courseList = courseList;
+  }
 
-    for (int i = 0; i < courseList.length; ++i) {
-      _semesterTuitionFee     += courseList[i].tuitionFee();
-      _semesterTuitionCredits += courseList[i].totalCredit();
-    }
+  /**
+   * Set class cost.
+   *
+   * @param  int
+   */
+  public void setClassCost(int classCost) {
+    _classCost = classCost;
+  }
+
+  /**
+   * Set lab cost.
+   *
+   * @param  int
+   */
+  public void setLabCost(int labCost) {
+    _labCost = labCost;
   }
 
   /**
@@ -136,6 +143,36 @@ public class Semester {
   }
 
   /**
+   * Return total credits
+   *
+   * @return int
+   */
+  public int totalCredit() {
+    int credits = 0;
+
+    for (int i = 0; i < _courseList.length; ++i) {
+      credits += _courseList[i].totalCredit();
+    }
+
+    return credits;
+  }
+
+  /**
+   * Return tuition fee.
+   *
+   * @return int
+   */
+  public int tuitionFee() {
+    int fees = 0;
+
+    for (int i = 0; i < _courseList.length; ++i) {
+      fees += _courseList[i].tuitionFee();
+    }
+
+    return fees;
+  }
+
+  /**
    * This method will convert a semester total fee to a CSV string.
    *
    * @return String
@@ -144,10 +181,10 @@ public class Semester {
     StringBuilder builder = new StringBuilder();
 
     builder.append("#");
-    builder.append(",");
-    builder.append(_semesterTuitionCredits);
-    builder.append(",");
-    builder.append(_semesterTuitionFee);
+    builder.append(", ");
+    builder.append(totalCredit());
+    builder.append(", ");
+    builder.append(tuitionFee());
 
     return builder.toString();
   }

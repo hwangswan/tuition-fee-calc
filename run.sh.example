@@ -1,0 +1,8 @@
+
+## Path to input.csv file
+INPUT_FILE=""
+
+## Path to output.csv
+OUTPUT_FILE=""
+
+java src/Main.java $INPUT_FILE $OUTPUT_FILE
