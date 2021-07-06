@@ -1,7 +1,7 @@
 # tuition-fee-calc
-Calculate my tuition fee in a semester, doing under OOP Java.
+[![Build Status](https://dev.azure.com/19120338/trhgquan/_apis/build/status/trhgquan.tuition-fee-calc?branchName=main)](https://dev.azure.com/19120338/trhgquan/_build/latest?definitionId=2&branchName=main)
 
-VNUHCM - University of Science, Spring 2021.
+Calculate my tuition fee in a semester, doing under OOP Java.
 
 ## what it will do
 Calculate semester tuition fee in a .csv file.
