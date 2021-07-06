@@ -101,13 +101,16 @@ public class Helper {
      * @return Semester.Course
      * @throws Exception
      */
-    public static Semester.Course scanCourse(String inputLine) throws Exception {
+    public static Semester.Course scanCourse(String inputLine)
+      throws Exception {
       String[] currentLineData = inputLine.split(",", 3);
 
       // Added string.trim(), since numbers in .csv can have spaces before & after.
-      Semester.Course course = new Semester.Course(currentLineData[0],
-                                                   Integer.parseInt(currentLineData[1].trim()),
-                                                   Integer.parseInt(currentLineData[2].trim()));
+      Semester.Course course = new Semester.Course(
+        currentLineData[0],
+        Integer.parseInt(currentLineData[1].trim()),
+        Integer.parseInt(currentLineData[2].trim())
+      );
 
       return course;
     }
@@ -119,7 +122,8 @@ public class Helper {
      * @return Semester.Course[]
      * @throws Exception
      */
-    public static Semester.Course[] scanCourseList(String inputFileName) throws Exception {
+    public static Semester.Course[] scanCourseList(String inputFileName)
+      throws Exception {
       List<Semester.Course> builder = new ArrayList<Semester.Course>();
 
       // Create a new file reader.
@@ -171,7 +175,8 @@ public class Helper {
      * @param  Semester
      * @throws Exception
      */
-    public static void toFile(String outputFileName, Semester semester) throws Exception {
+    public static void toFile(String outputFileName, Semester semester)
+      throws Exception {
       Semester.Course[] courseList = semester.courseList();
       
       // Create a new file writer.
