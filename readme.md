@@ -44,20 +44,14 @@ The .csv input file should looks like this:
 java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv> 
 ```
 ### Shell scripts
-- Rename `compile.sh.example` and `run.sh.example`:
-  ```shell
-  cp compile.sh.example compile.sh
+- Rename `run.sh.example`:
+  ```shelll
   cp run.sh.example run.sh
   ```
 
 - Grant permissions:
   ```shell
-  chmod 0700 compile.sh run.sh
-  ```
-
-- Compile:
-  ```shell
-  ./compile.sh
+  chmod 0700 run.sh
   ```
 
 - Edit `run.sh`
