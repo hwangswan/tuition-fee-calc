@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Build package
+javac -d . src/Semester.java
+javac -d . src/Helper.java
+
+# Build main
+java src/Main.java data/19120338.csv fee.csv
+
+if [[ $? -ne 0 ]]; then
+  echo "Build failed"
+  exit 1
+else
+  echo "Build success"
+  cat fee.csv
+fi
