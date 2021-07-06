@@ -18,4 +18,5 @@ if [[ $? -ne 0 ]]; then
 else
   echo "Build success"
   cat fee.csv
+  echo;
 fi
