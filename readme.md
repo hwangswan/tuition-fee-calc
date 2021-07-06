@@ -65,3 +65,9 @@ java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv>
   ```shell
   ./run.sh
   ```
+- Testing:
+  ```shell
+  cp test.sh.example test.sh
+  sudo chmod 0700 test.sh
+  ./test.sh
+  ```

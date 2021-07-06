@@ -181,7 +181,7 @@ public class Semester {
   public String toCSVString() {
     StringBuilder builder = new StringBuilder();
 
-    builder.append("#");
+    builder.append("Total");
     builder.append(", ");
     builder.append(totalCredit());
     builder.append(", ");
