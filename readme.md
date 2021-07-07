@@ -41,7 +41,7 @@ The .csv input file should looks like this:
   Replace `COST_OF_ONE_CLASS_CREDIT` with __cost of class credit__, `COST_OF_ONE_LAB_CREDIT` with __cost of lab credit__.
 ### Command-line
 ```shell
-java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv> 
+java src/Main.java <INPUT_FILE.csv> <OUTPUT_FILE.csv>
 ```
 ### Shell scripts
 - Rename `run.sh.example`:
