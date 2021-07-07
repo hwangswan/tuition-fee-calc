@@ -29,13 +29,13 @@ public class Helper {
      *
      */
     final String configFile = "tuition-fee-calc.config";
-    
+
     /**
      * Private fileStream.
      *
      */
     private InputStream _fileStream = null;
-   
+
     /**
      * Properties loaded.
      *
@@ -50,7 +50,7 @@ public class Helper {
 
     /**
      * Private constructor for Config
-     * 
+     *
      * @throws Exception
      */
     private Config() throws Exception {
@@ -135,7 +135,7 @@ public class Helper {
       // Scan through lines.
       while (scanner.hasNextLine()) {
         Semester.Course newCourse = scanCourse(scanner.nextLine());
-        
+
         builder.add(newCourse);
       }
 
@@ -161,7 +161,7 @@ public class Helper {
       return semester;
     }
   }
-  
+
   /**
    * This class is all about output.
    *
@@ -178,7 +178,7 @@ public class Helper {
     public static void toFile(String outputFileName, Semester semester)
       throws Exception {
       Semester.Course[] courseList = semester.courseList();
-      
+
       // Create a new file writer.
       FileWriter writer = new FileWriter(outputFileName);
 
@@ -194,11 +194,11 @@ public class Helper {
       // Print the course's total tuition fee.
       writer.write(semester.toCSVString());
 
-      // Close the file writer. 
+      // Close the file writer.
       writer.close();
 
       // Notice the user.
       System.out.println(outputFileName + " created!");
-    } 
+    }
   }
 }

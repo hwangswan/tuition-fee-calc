@@ -77,7 +77,7 @@ public class Semester {
      * @return int
      */
     public int tuitionFee() {
-      return (_labCredit * Semester._labCost) + 
+      return (_labCredit * Semester._labCost) +
              (_classCredit * Semester._classCost);
     }
 
